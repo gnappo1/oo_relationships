@@ -14,11 +14,13 @@ class Pet
     def self.create
         pet = Pet.new #instantiate
         pet.save #persist/store inside the class array
+        pet
     end
 
     def self.create_by_name_and_species(name, species)
         pet = Pet.new(name, species) #instantiate
         pet.save #persist/store inside the class array
+        pet
     end
 
     def self.new_by_name(name)

@@ -1,4 +1,6 @@
-# Person class
+# OO Relationships: Has Many Through
+
+## Person class
 
 1. name
 2. age
@@ -7,7 +9,7 @@
 5. create
 6. create_by_name
 
-# Pet class
+## Pet class
 
 1. name
 2. age
@@ -15,7 +17,7 @@
 4. owner
 5. breed
 
-# Breed class
+## Breed class
 
 1. name
 2. pets
