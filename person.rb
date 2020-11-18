@@ -24,13 +24,13 @@ class Person
     def self.create
         person = Person.new #instantiate
         person.save #persist/store inside the class array
-        person
+        person #return the person instantiated
     end
 
     def self.create_by_name(name)
         person = Person.new(name) #instantiate
         person.save #persist/store inside the class array
-        person
+        person #return the person instantiated
     end
 
     def self.new_by_name(name)

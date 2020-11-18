@@ -21,13 +21,13 @@ class Breed
     def self.create
         breed = new
         breed.save
-        breed
+        breed #return the breed instantiated
     end
 
     def self.create_by_name(name)
         breed = new(name)
         breed.save
-        breed
+        breed #return the breed instantiated
     end
 
     def self.new_by_name(name)
