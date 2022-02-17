@@ -14,7 +14,7 @@
 1. name
 2. age
 3. species
-4. owner
+4. person
 5. breed
 
 ## Breed class

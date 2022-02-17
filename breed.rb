@@ -1,47 +1,53 @@
 class Breed
-    attr_reader :name
+    
+    attr_accessor :name
+
     @@all = []
 
     def initialize(name)
-        @name = name
+        self.name = name
     end
 
-    def pets
-        Pet.all.select {|pet| pet.breed == self}
-    end
-
-    def persons
-        pets.map {|pet| pet.person}
-    end
-
-    def save
-        self.class.all << self
-    end
-
-    def self.create
-        breed = new
-        breed.save
-        breed #return the breed instantiated
-    end
-
-    def self.create_by_name(name)
-        breed = new(name)
-        breed.save
-        breed #return the breed instantiated
-    end
-
-    def self.new_by_name(name)
-        new(name)
-    end
-
-    def self.find_or_create_by_name(name)
-        # maybe_breed = all.find {|breed| breed.name == name}
-        # maybe_breed ? maybe_breed : create_by_name(name)
-        all.find {|breed| breed.name == name} || create_by_name(name)
-    end
+    # class methods
 
     def self.all
         @@all
     end
+
+    def self.create
+        self.new.tap{|breed| breed.save}
+    end
+
+    def self.create_by_name(name)
+        self.new(name).tap{|breed| breed.save}
+    end
+
+    def self.new_by_name(name)
+        self.new(name)
+    end
+
+    def self.find_by_name(name)
+        self.all.find {|breed| breed.name == name}
+    end
+    
+    def self.find_or_create_by_name(name)
+        self.find_by_name(name) or self.create_by_name(name)
+    end
+
+    # instance methods
+    
+    def save
+        self.class.all << self
+    end
+
+    def pets 
+        Pet.all.select {|pet| pet.breed == self}
+    end
+
+    def persons
+        # pets.map {|pet| pet.breed}
+        pets.map(&:person)
+    end
+
 
 end
